@@ -3,52 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Math Helper</title>
+  <title>Help Tools - ตัวประกอบ</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="moving-circle"></div>
   <header>
-    <h1>Math Helper</h1>
-    <nav class="tabs">
-      <button class="tab-button active" data-tab="factors">ตัวประกอบ</button>
-      <button class="tab-button" data-tab="multiplication">สูตรคูณ</button>
-      <button class="tab-button" data-tab="prime">เช็คจำนวนเฉพาะ</button>
-      <button class="tab-button" data-tab="gcd-lcm">หาตัวหาร/คูณร่วม</button>
-    </nav>
+    <h1>หาตัวประกอบ</h1>
   </header>
 
   <main>
-    <!-- TAB 1: ตัวประกอบ -->
-    <section class="tab-content active" id="tab-factors">
-      <input type="number" id="factor-input" placeholder="ใส่เลขที่ต้องการหา..." min="1">
-      <button id="factor-button">หาตัวประกอบ</button>
-      <div class="result" id="factor-result"></div>
+    <section class="input-container">
+      <input type="text" id="number-input" placeholder="ใส่เลขที่ต้องการหา...">
     </section>
 
-    <!-- TAB 2: สูตรคูณ -->
-    <section class="tab-content" id="tab-multiplication">
-      <input type="number" id="multiply-input" placeholder="ใส่เลขสูตรคูณ..." min="1">
-      <button id="multiply-button">สร้างสูตรคูณ</button>
-      <div class="result" id="multiply-result"></div>
+    <section class="button-container">
+      <button id="find-button">หาตัวประกอบ</button>
+      <button id="random-button">สุ่มเลข</button>
+      <button id="reset-button">รีเซ็ต</button>
     </section>
 
-    <!-- TAB 3: เช็คจำนวนเฉพาะ -->
-    <section class="tab-content" id="tab-prime">
-      <input type="number" id="prime-input" placeholder="ใส่เลขเพื่อตรวจสอบ..." min="1">
-      <button id="prime-button">เช็คจำนวนเฉพาะ</button>
-      <div class="result" id="prime-result"></div>
-    </section>
-
-    <!-- TAB 4: GCD/LCM -->
-    <section class="tab-content" id="tab-gcd-lcm">
-      <input type="number" id="gcd-a" placeholder="เลขที่ 1" min="1">
-      <input type="number" id="gcd-b" placeholder="เลขที่ 2" min="1">
-      <button id="gcd-button">คำนวณ GCD & LCM</button>
-      <div class="result" id="gcd-result"></div>
+    <section class="result-container">
+      <div id="result"></div>
     </section>
   </main>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
