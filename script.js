@@ -5,53 +5,47 @@ document.addEventListener("DOMContentLoaded", () => {
   const numberInput = document.getElementById("number-input");
   const resultDiv = document.getElementById("result");
 
-  // ปุ่มหาตัวประกอบ
   findButton.addEventListener("click", calculateFactors);
 
-  // ปุ่มสุ่มเลข
   randomButton.addEventListener("click", () => {
     const randomNum = Math.floor(Math.random() * 500) + 1;
     numberInput.value = randomNum;
     calculateFactors();
   });
 
-  // ปุ่มรีเซ็ต
   resetButton.addEventListener("click", () => {
     numberInput.value = "";
     resultDiv.innerHTML = "";
   });
 
-  // กด Enter
   numberInput.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") calculateFactors();
+    if(event.key === "Enter") calculateFactors();
   });
 
-  // ฟังก์ชันคำนวณตัวประกอบ
   function calculateFactors() {
     const inputValue = numberInput.value.trim();
     const number = parseInt(inputValue);
 
-    if (isNaN(number) || number <= 0) {
+    if(isNaN(number) || number <= 0){
       resultDiv.innerHTML = `<span style="color:red;">ใส่แค่ตัวเลขเท่านั้น!</span>`;
       return;
     }
 
     const factors = [];
-    for (let i = 1; i <= number; i++) if (number % i === 0) factors.push(i);
+    for(let i=1; i<=number; i++) if(number%i===0) factors.push(i);
 
-    const isPrime = factors.length === 2;
-    const isEven = number % 2 === 0;
+    const isPrime = factors.length===2;
+    const isEven = number%2===0;
     const stepStr = factors.join(" × ");
 
     resultDiv.innerHTML = `
       <p><strong>ตัวประกอบ:</strong> <span class="factors">${factors.join(", ")}</span></p>
       <p><strong>จำนวนตัวประกอบ:</strong> ${factors.length}</p>
-      <p><strong>ประเภทเลข:</strong> <span class="${isEven ? 'even' : 'odd'}">${isEven ? "คู่" : "คี่"}</span></p>
-      <p><strong>Prime:</strong> <span class="${isPrime ? 'prime' : 'not-prime'}">${isPrime ? "เป็นจำนวนเฉพาะ" : "ไม่เป็นจำนวนเฉพาะ"}</span></p>
+      <p><strong>ประเภทเลข:</strong> <span class="${isEven?'even':'odd'}">${isEven?'คู่':'คี่'}</span></p>
+      <p><strong>Prime:</strong> <span class="${isPrime?'prime':'not-prime'}">${isPrime?'เป็นจำนวนเฉพาะ':'ไม่เป็นจำนวนเฉพาะ'}</span></p>
       <p><strong>Tips:</strong> <span class="step">${stepStr}</span></p>
     `;
 
-    // animation glow
     resultDiv.classList.remove("animate");
     void resultDiv.offsetWidth;
     resultDiv.classList.add("animate");
