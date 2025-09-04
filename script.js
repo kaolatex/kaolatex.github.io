@@ -39,14 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const isPrime = factors.length === 2;
     const isEven = number % 2 === 0;
 
-    let stepStr = factors.join(" × ");
+    const stepStr = factors.join(" × ");
 
     resultDiv.innerHTML = `
-      <p>ตัวประกอบของ ${number}: ${factors.join(", ")}</p>
-      <p>จำนวนตัวประกอบ: ${factors.length}</p>
-      <p>${isEven ? "เป็นเลขคู่" : "เป็นเลขคี่"}</p>
-      <p>${isPrime ? `<span style="color: lime;">${number} เป็นจำนวนเฉพาะ!</span>` : `<span style="color: red;">${number} ไม่เป็นจำนวนเฉพาะ.</span>`}</p>
-      <p>Step by step: ${stepStr}</p>
+      <p><strong>ตัวประกอบ:</strong> ${factors.join(", ")}</p>
+      <p><strong>จำนวนตัวประกอบ:</strong> ${factors.length}</p>
+      <p><strong>ประเภทเลข:</strong> ${isEven ? "คู่" : "คี่"}</p>
+      <p><strong>Prime:</strong> ${isPrime ? "เป็นจำนวนเฉพาะ" : "ไม่เป็นจำนวนเฉพาะ"}</p>
+      <p><strong>Step by step:</strong> ${stepStr}</p>
     `;
   }
 });
