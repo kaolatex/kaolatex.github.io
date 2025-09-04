@@ -1,58 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
   const findButton = document.getElementById("find-button");
+  const randomButton = document.getElementById("random-button");
+  const resetButton = document.getElementById("reset-button");
   const numberInput = document.getElementById("number-input");
   const resultDiv = document.getElementById("result");
 
-  // สร้างปุ่ม Random และ Reset ใน DOM
-  const buttonSection = document.createElement("div");
-  buttonSection.classList.add("button-section");
-  
-  const randomBtn = document.createElement("button");
-  randomBtn.textContent = "สุ่มเลข";
-  buttonSection.appendChild(randomBtn);
-  
-  const resetBtn = document.createElement("button");
-  resetBtn.textContent = "รีเซ็ท";
-  buttonSection.appendChild(resetBtn);
-
-  // เพิ่มปุ่มเข้ากับ body หลัง input
-  const inputContainer = numberInput.parentElement;
-  inputContainer.insertAdjacentElement("afterend", buttonSection);
-
-  // ปุ่ม Find
+  // ปุ่มหาตัวประกอบ
   findButton.addEventListener("click", calculateFactors);
 
-  // ปุ่ม Random
-  randomBtn.addEventListener("click", () => {
+  // ปุ่มสุ่มเลข
+  randomButton.addEventListener("click", () => {
     const randomNum = Math.floor(Math.random() * 500) + 1;
     numberInput.value = randomNum;
     calculateFactors();
   });
 
-  // ปุ่ม Reset
-  resetBtn.addEventListener("click", () => {
+  // ปุ่มรีเซ็ต
+  resetButton.addEventListener("click", () => {
     numberInput.value = "";
     resultDiv.innerHTML = "";
   });
 
-  // กด Enter ใน input
+  // กด Enter
   numberInput.addEventListener("keypress", (event) => {
     if (event.key === "Enter") calculateFactors();
   });
 
+  // ฟังก์ชันคำนวณตัวประกอบ
   function calculateFactors() {
     const inputValue = numberInput.value.trim();
     const number = parseInt(inputValue);
 
     if (isNaN(number) || number <= 0) {
-      resultDiv.innerHTML = `<span style="color: red;">ใส่แค่ตัวเลขเท่านั้นโว้ยย.</span>`;
+      resultDiv.innerHTML = `<span style="color:red;">ใส่แค่ตัวเลขเท่านั้น!</span>`;
       return;
     }
 
     const factors = [];
-    for (let i = 1; i <= number; i++) {
-      if (number % i === 0) factors.push(i);
-    }
+    for (let i = 1; i <= number; i++) if (number % i === 0) factors.push(i);
 
     const isPrime = factors.length === 2;
     const isEven = number % 2 === 0;
@@ -63,10 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>จำนวนตัวประกอบ:</strong> ${factors.length}</p>
       <p><strong>ประเภทเลข:</strong> <span class="${isEven ? 'even' : 'odd'}">${isEven ? "คู่" : "คี่"}</span></p>
       <p><strong>Prime:</strong> <span class="${isPrime ? 'prime' : 'not-prime'}">${isPrime ? "เป็นจำนวนเฉพาะ" : "ไม่เป็นจำนวนเฉพาะ"}</span></p>
-      <p><strong>Step by step:</strong> <span class="step">${stepStr}</span></p>
+      <p><strong>Tips:</strong> <span class="step">${stepStr}</span></p>
     `;
 
-    // animation
+    // animation glow
     resultDiv.classList.remove("animate");
     void resultDiv.offsetWidth;
     resultDiv.classList.add("animate");
