@@ -46,6 +46,7 @@ body {
   text-shadow: 0 5px 15px rgba(255, 255, 255, 0.6);
 }
 
+/* ========================= INPUT ========================= */
 .input-section {
   width: 100%;
   margin-bottom: 15px;
@@ -62,7 +63,7 @@ input {
   background: #fff;
   box-shadow: 0 0 10px rgba(255,255,255,0.3);
   transition: all 0.3s;
-  animation: rainbowBorder 3s infinite linear;
+  animation: rainbowBorder 3s infinite linear; /* คืน animation */
 }
 
 @keyframes rainbowBorder {
@@ -78,9 +79,10 @@ input {
 
 input:focus {
   outline: none;
-  box-shadow: 0 0 25px rgba(255,0,255,0.8);
+  box-shadow: 0 0 25px rgba(255,0,255,0.8); /* Glow เวลากด */
 }
 
+/* ========================= BUTTON ========================= */
 .button-section {
   display: flex;
   flex-direction: column;
@@ -116,7 +118,7 @@ button::after {
 }
 
 button:hover::after {
-  opacity: 1;
+  opacity: 1; /* Glow เวลาวางเมาส์ */
 }
 
 button:hover {
@@ -128,6 +130,7 @@ button:active {
   transform: scale(0.95);
 }
 
+/* ========================= RESULT ========================= */
 .result-section {
   background: rgba(255,255,255,0.1);
   width: 100%;
@@ -137,6 +140,7 @@ button:active {
   text-align: left;
 }
 
+/* ========================= TIPS ========================= */
 .tips-section {
   background: rgba(255,255,255,0.05);
   width: 100%;
