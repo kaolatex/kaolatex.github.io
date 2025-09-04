@@ -23,7 +23,7 @@ body {
   left:50%;
   transform: translate(-50%, -50%);
   z-index:0;
-  pointer-events: none; /* ทำให้คลิกทะลุ */
+  pointer-events: none;
 }
 
 .container {
@@ -63,7 +63,6 @@ input {
 }
 input:focus{outline:none; box-shadow:0 0 25px rgba(255,0,255,0.8);}
 
-/* BUTTON */
 .button-section {
   display:flex; flex-direction:column; gap:10px; width:100%; margin-bottom:20px;
 }
@@ -80,21 +79,13 @@ button:hover::after { opacity:1; }
 button:hover { transform: translateY(-3px); box-shadow:0 10px 20px rgba(255,255,255,0.2); }
 button:active { transform:scale(0.95); }
 
-/* RESULT */
 #result {
   position:relative; z-index:2; background:rgba(255,255,255,0.1); width:100%;
   border-radius:10px; padding:15px; margin-bottom:15px; text-align:left; font-size:1rem;
 }
 #result p { margin-bottom:8px; }
-#result .factors{color:#00ffff;text-shadow:0 0 5px #00ffff;}
-#result .prime{color:#00ff00;text-shadow:0 0 8px #00ff00;}
-#result .not-prime{color:#ff4444;text-shadow:0 0 8px #ff4444;}
-#result .even{color:#ffa500;text-shadow:0 0 5px #ffa500;}
-#result .odd{color:#ff99cc;text-shadow:0 0 5px #ff99cc;}
-#result .step{color:#ffff00;text-shadow:0 0 5px #ffff00;}
 #result.animate { animation: glowPulse 0.5s ease-in-out; }
 @keyframes glowPulse { 0%{transform:scale(1);opacity:0.8;} 50%{transform:scale(1.02);opacity:1;} 100%{transform:scale(1);opacity:0.9;} }
 
-/* TIPS */
 .tips-section { text-align:left; margin-top:10px; color:#fff; }
 .tips-section h3 { margin-bottom:5px; }
