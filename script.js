@@ -4,11 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetButton = document.getElementById("reset-button");
   const numberInput = document.getElementById("number-input");
   const resultDiv = document.getElementById("result");
-  const historyList = document.getElementById("history-list");
   const chart = document.getElementById("chart");
   const ctx = chart.getContext("2d");
-
-  let history = [];
 
   findButton.addEventListener("click", calculateFactors);
   randomButton.addEventListener("click", () => {
@@ -45,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const isPrime = factors.length === 2;
     const isEven = number % 2 === 0;
 
-    // Update result text
     let stepStr = factors.map(f => f).join(" × ");
     resultDiv.innerHTML = `
       <p>ตัวประกอบของ ${number}: ${factors.join(", ")}</p>
@@ -55,17 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
       <p>Step by step: ${stepStr}</p>
     `;
 
-    // Update chart (bar chart)
+    // วาดกราฟ
     ctx.clearRect(0, 0, chart.width, chart.height);
     const barWidth = chart.width / factors.length - 5;
     factors.forEach((factor, i) => {
       ctx.fillStyle = (factor === 1 || factor === number) ? "lime" : "orange";
       ctx.fillRect(i * (barWidth + 5), chart.height - factor, barWidth, factor);
     });
-
-    // Update history
-    history.unshift(number);
-    if (history.length > 5) history.pop();
-    historyList.innerHTML = history.map(n => `<li>${n}</li>`).join("");
   }
 });
