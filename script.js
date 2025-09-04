@@ -3,8 +3,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const numberInput = document.getElementById("number-input");
   const resultDiv = document.getElementById("result");
 
-  // กดปุ่มคำนวณ
+  // สร้างปุ่ม Random และ Reset ใน DOM
+  const buttonSection = document.createElement("div");
+  buttonSection.classList.add("button-section");
+  
+  const randomBtn = document.createElement("button");
+  randomBtn.textContent = "สุ่มเลข";
+  buttonSection.appendChild(randomBtn);
+  
+  const resetBtn = document.createElement("button");
+  resetBtn.textContent = "รีเซ็ท";
+  buttonSection.appendChild(resetBtn);
+
+  // เพิ่มปุ่มเข้ากับ body หลัง input
+  const inputContainer = numberInput.parentElement;
+  inputContainer.insertAdjacentElement("afterend", buttonSection);
+
+  // ปุ่ม Find
   findButton.addEventListener("click", calculateFactors);
+
+  // ปุ่ม Random
+  randomBtn.addEventListener("click", () => {
+    const randomNum = Math.floor(Math.random() * 500) + 1;
+    numberInput.value = randomNum;
+    calculateFactors();
+  });
+
+  // ปุ่ม Reset
+  resetBtn.addEventListener("click", () => {
+    numberInput.value = "";
+    resultDiv.innerHTML = "";
+  });
 
   // กด Enter ใน input
   numberInput.addEventListener("keypress", (event) => {
@@ -15,13 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputValue = numberInput.value.trim();
     const number = parseInt(inputValue);
 
-    // ตรวจสอบว่าตัวเลขถูกต้อง
     if (isNaN(number) || number <= 0) {
       resultDiv.innerHTML = `<span style="color: red;">ใส่แค่ตัวเลขเท่านั้นโว้ยย.</span>`;
       return;
     }
 
-    // หา factors
     const factors = [];
     for (let i = 1; i <= number; i++) {
       if (number % i === 0) factors.push(i);
@@ -29,10 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const isPrime = factors.length === 2;
     const isEven = number % 2 === 0;
-
     const stepStr = factors.join(" × ");
 
-    // สร้าง HTML ผลลัพธ์
     resultDiv.innerHTML = `
       <p><strong>ตัวประกอบ:</strong> <span class="factors">${factors.join(", ")}</span></p>
       <p><strong>จำนวนตัวประกอบ:</strong> ${factors.length}</p>
@@ -41,9 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Step by step:</strong> <span class="step">${stepStr}</span></p>
     `;
 
-    // เพิ่ม animation เด้ง ๆ
-    resultDiv.classList.remove("animate"); // รีเซ็ต animation
-    void resultDiv.offsetWidth; // trigger reflow
+    // animation
+    resultDiv.classList.remove("animate");
+    void resultDiv.offsetWidth;
     resultDiv.classList.add("animate");
   }
 });
