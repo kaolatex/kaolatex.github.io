@@ -39,11 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const stepStr = factors.join(" × ");
 
     resultDiv.innerHTML = `
-      <p><strong>ตัวประกอบ:</strong> <span class="factors">${factors.join(", ")}</span></p>
+      <p><strong>ตัวประกอบ:</strong> ${factors.join(", ")}</p>
       <p><strong>จำนวนตัวประกอบ:</strong> ${factors.length}</p>
-      <p><strong>ประเภทเลข:</strong> <span class="${isEven?'even':'odd'}">${isEven?'คู่':'คี่'}</span></p>
-      <p><strong>Prime:</strong> <span class="${isPrime?'prime':'not-prime'}">${isPrime?'เป็นจำนวนเฉพาะ':'ไม่เป็นจำนวนเฉพาะ'}</span></p>
-      <p><strong>Tips:</strong> <span class="step">${stepStr}</span></p>
+      <p><strong>ประเภทเลข:</strong> ${isEven?'คู่':'คี่'}</p>
+      <p><strong>Prime:</strong> ${isPrime?'เป็นจำนวนเฉพาะ':'ไม่เป็นจำนวนเฉพาะ'}</p>
+      <p><strong>Tips:</strong> ${stepStr}</p>
     `;
 
     resultDiv.classList.remove("animate");
