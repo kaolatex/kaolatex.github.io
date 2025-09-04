@@ -9,21 +9,14 @@ body {
   background: #1c1c1c;
   color: white;
   display: flex;
-  justify-content: center;   /* จัดกลางแนวนอน */
-  align-items: center;       /* จัดกลางแนวตั้ง */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
   text-align: center;
   padding: 20px;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  z-index: 1;
 }
 
 .moving-circle {
@@ -43,12 +36,17 @@ header h1 {
   font-size: 3rem;
   font-weight: bold;
   color: white;
+  margin-bottom: 20px;
   text-shadow: 0 5px 15px rgba(255, 255, 255, 0.6);
+  z-index: 1;
 }
 
 .input-container {
+  margin-bottom: 20px;
   width: 100%;
   max-width: 300px;
+  position: relative;
+  z-index: 1;
 }
 
 input {
@@ -82,12 +80,13 @@ input:focus {
 }
 
 .button-container {
+  margin-bottom: 20px;
   width: 100%;
   max-width: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: center;
+  z-index: 1;
 }
 
 button {
@@ -133,17 +132,31 @@ button:hover::after {
 }
 
 .result-container {
+  margin-top: 20px;
   width: 100%;
   max-width: 400px;
   background-color: rgba(255,255,255,0.1);
   border-radius: 8px;
   padding: 15px;
+  z-index: 1;
 }
 
-.tips-container {
+canvas {
+  margin-top: 15px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+}
+
+.history-container, .tips-container {
+  margin-top: 20px;
   max-width: 400px;
   text-align: left;
   background-color: rgba(255,255,255,0.05);
   border-radius: 8px;
   padding: 10px;
+  z-index: 1;
+}
+
+.history-container ul {
+  list-style: inside;
 }
