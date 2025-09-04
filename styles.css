@@ -39,12 +39,6 @@ header h1 {
   text-shadow: 0 5px 15px rgba(255, 255, 255, 0.6);
 }
 
-.image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
 .input-container {
   margin-bottom: 20px;
   width: 100%;
@@ -64,48 +58,24 @@ input {
   position: relative;
   z-index: 1;
   transition: transform 0.3s, box-shadow 0.3s;
-  animation: rainbowBorder 3s infinite linear; /* การเปลี่ยนสีกรอบ */
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* เพิ่มเงาครั้งแรก */
+  animation: rainbowBorder 3s infinite linear;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 @keyframes rainbowBorder {
-  0% {
-    border-color: red;
-    box-shadow: 0 0 15px red;
-  }
-  14% {
-    border-color: orange;
-    box-shadow: 0 0 15px orange;
-  }
-  28% {
-    border-color: yellow;
-    box-shadow: 0 0 15px yellow;
-  }
-  42% {
-    border-color: green;
-    box-shadow: 0 0 15px green;
-  }
-  57% {
-    border-color: blue;
-    box-shadow: 0 0 15px blue;
-  }
-  71% {
-    border-color: indigo;
-    box-shadow: 0 0 15px indigo;
-  }
-  85% {
-    border-color: violet;
-    box-shadow: 0 0 15px violet;
-  }
-  100% {
-    border-color: red;
-    box-shadow: 0 0 15px red;
-  }
+  0% { border-color: red; box-shadow: 0 0 15px red; }
+  14% { border-color: orange; box-shadow: 0 0 15px orange; }
+  28% { border-color: yellow; box-shadow: 0 0 15px yellow; }
+  42% { border-color: green; box-shadow: 0 0 15px green; }
+  57% { border-color: blue; box-shadow: 0 0 15px blue; }
+  71% { border-color: indigo; box-shadow: 0 0 15px indigo; }
+  85% { border-color: violet; box-shadow: 0 0 15px violet; }
+  100% { border-color: red; box-shadow: 0 0 15px red; }
 }
 
 input:focus {
   outline: none;
-  box-shadow: 0 0 20px rgba(255, 0, 255, 0.8); /* เงารุ้งเมื่อ focus */
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
 }
 
 .button-container {
@@ -159,7 +129,7 @@ button:hover::after {
 .result-container {
   margin-top: 20px;
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
 }
 
 #result {
@@ -168,4 +138,12 @@ button:hover::after {
   border-radius: 8px;
   color: white;
   text-align: left;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#result.show {
+  opacity: 1;
+  transform: translateY(0);
 }
