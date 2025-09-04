@@ -1,40 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Help Tools - ตัวประกอบ</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="moving-circle"></div>
+document.addEventListener("DOMContentLoaded", () => {
+  const findButton = document.getElementById("find-button");
+  const randomButton = document.getElementById("random-button");
+  const resetButton = document.getElementById("reset-button");
+  const numberInput = document.getElementById("number-input");
+  const resultDiv = document.getElementById("result");
 
-  <main class="container">
-    <header>
-      <h1 class="title">หาตัวประกอบ</h1>
-    </header>
+  // ปุ่มหาตัวประกอบ
+  findButton.addEventListener("click", calculateFactors);
 
-    <section class="input-section">
-      <input type="text" id="number-input" placeholder="ใส่เลขที่ต้องการหา...">
-    </section>
+  // ปุ่มสุ่มเลข
+  randomButton.addEventListener("click", () => {
+    const randomNum = Math.floor(Math.random() * 500) + 1;
+    numberInput.value = randomNum;
+    calculateFactors();
+  });
 
-    <section class="button-section">
-      <button id="find-button">หาตัวประกอบ</button>
-      <button id="random-button">สุ่มเลข</button>
-      <button id="reset-button">รีเซ็ต</button>
-    </section>
+  // ปุ่มรีเซ็ต
+  resetButton.addEventListener("click", () => {
+    numberInput.value = "";
+    resultDiv.innerHTML = "";
+  });
 
-    <section class="result-section">
-      <div id="result"></div>
-    </section>
+  // กด Enter
+  numberInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") calculateFactors();
+  });
 
-    <section class="tips-section">
-      <h3>Tips</h3>
-      <p>เลขเฉพาะ (Prime) คือเลขที่มีตัวประกอบแค่ 1 และตัวมันเอง</p>
-      <p>เลขคู่ = หาร 2 ลงตัว, เลขคี่ = หาร 2 ไม่ลงตัว</p>
-    </section>
-  </main>
+  // ฟังก์ชันคำนวณตัวประกอบ
+  function calculateFactors() {
+    const inputValue = numberInput.value.trim();
+    const number = parseInt(inputValue);
 
-  <script src="script.js"></script>
-</body>
-</html>
+    if (isNaN(number) || number <= 0) {
+      resultDiv.innerHTML = `<span style="color:red;">ใส่แค่ตัวเลขเท่านั้น!</span>`;
+      return;
+    }
+
+    const factors = [];
+    for (let i = 1; i <= number; i++) if (number % i === 0) factors.push(i);
+
+    const isPrime = factors.length === 2;
+    const isEven = number % 2 === 0;
+    const stepStr = factors.join(" × ");
+
+    resultDiv.innerHTML = `
+      <p><strong>ตัวประกอบ:</strong> <span class="factors">${factors.join(", ")}</span></p>
+      <p><strong>จำนวนตัวประกอบ:</strong> ${factors.length}</p>
+      <p><strong>ประเภทเลข:</strong> <span class="${isEven ? 'even' : 'odd'}">${isEven ? "คู่" : "คี่"}</span></p>
+      <p><strong>Prime:</strong> <span class="${isPrime ? 'prime' : 'not-prime'}">${isPrime ? "เป็นจำนวนเฉพาะ" : "ไม่เป็นจำนวนเฉพาะ"}</span></p>
+      <p><strong>Tips:</strong> <span class="step">${stepStr}</span></p>
+    `;
+
+    // animation glow
+    resultDiv.classList.remove("animate");
+    void resultDiv.offsetWidth; // รีเฟรช animation
+    resultDiv.classList.add("animate");
+  }
+});
