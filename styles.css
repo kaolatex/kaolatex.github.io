@@ -32,63 +32,31 @@ body {
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: white;
   margin-bottom: 20px;
   text-shadow: 0 5px 15px rgba(255, 255, 255, 0.6);
 }
 
-.tabs {
-  display: flex;
-  gap: 10px;
+.input-container {
   margin-bottom: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.tab-button {
-  flex: 1;
-  min-width: 120px;
-  padding: 10px;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  background: #333;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.tab-button.active {
-  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-}
-
-.tab-content {
-  display: none;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
   width: 100%;
-  max-width: 320px;
-}
-
-.tab-content.active {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
+  max-width: 300px;
+  position: relative;
 }
 
 input {
   width: 100%;
   padding: 10px;
   font-size: 1rem;
-  margin-bottom: 10px;
   border: 2px solid transparent;
   border-radius: 8px;
   background-color: #fff;
   color: #333;
   text-align: center;
+  position: relative;
+  z-index: 1;
   transition: transform 0.3s, box-shadow 0.3s;
   animation: rainbowBorder 3s infinite linear;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
@@ -110,6 +78,15 @@ input:focus {
   box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
 }
 
+.button-container {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 button {
   width: 100%;
   padding: 10px;
@@ -119,9 +96,9 @@ button {
   color: white;
   border: none;
   border-radius: 20px;
+  position: relative;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
 }
 
 button:hover {
@@ -152,10 +129,15 @@ button:hover::after {
   opacity: 1;
 }
 
-.result {
+.result-container {
   margin-top: 20px;
-  background: rgba(255,255,255,0.1);
+  width: 100%;
+  max-width: 300px;
+}
+
+#result {
   padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: white;
   text-align: left;
