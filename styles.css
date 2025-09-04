@@ -27,14 +27,15 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 0;
+  z-index: 0; /* ต้องต่ำกว่า container */
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1;
+  z-index: 2; /* อยู่ด้านบน moving-circle */
+  position: relative;
   width: 100%;
   max-width: 400px;
 }
@@ -53,6 +54,8 @@ body {
 }
 
 input {
+  position: relative;
+  z-index: 2;
   width: 100%;
   padding: 12px;
   font-size: 1rem;
@@ -63,7 +66,7 @@ input {
   background: #fff;
   box-shadow: 0 0 10px rgba(255,255,255,0.3);
   transition: all 0.3s;
-  animation: rainbowBorder 3s infinite linear; /* คืน animation */
+  animation: rainbowBorder 3s infinite linear;
 }
 
 @keyframes rainbowBorder {
@@ -79,7 +82,7 @@ input {
 
 input:focus {
   outline: none;
-  box-shadow: 0 0 25px rgba(255,0,255,0.8); /* Glow เวลากด */
+  box-shadow: 0 0 25px rgba(255,0,255,0.8);
 }
 
 /* ========================= BUTTON ========================= */
@@ -92,6 +95,8 @@ input:focus {
 }
 
 button {
+  position: relative;
+  z-index: 2;
   padding: 12px;
   font-size: 1rem;
   font-weight: bold;
@@ -100,7 +105,6 @@ button {
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  position: relative;
   transition: all 0.3s;
 }
 
@@ -118,7 +122,7 @@ button::after {
 }
 
 button:hover::after {
-  opacity: 1; /* Glow เวลาวางเมาส์ */
+  opacity: 1;
 }
 
 button:hover {
@@ -132,6 +136,8 @@ button:active {
 
 /* ========================= RESULT ========================= */
 .result-section {
+  position: relative;
+  z-index: 2;
   background: rgba(255,255,255,0.1);
   width: 100%;
   border-radius: 10px;
@@ -142,6 +148,8 @@ button:active {
 
 /* ========================= TIPS ========================= */
 .tips-section {
+  position: relative;
+  z-index: 2;
   background: rgba(255,255,255,0.05);
   width: 100%;
   border-radius: 10px;
