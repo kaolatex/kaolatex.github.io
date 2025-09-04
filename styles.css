@@ -141,13 +141,7 @@ button:hover::after {
   z-index: 1;
 }
 
-canvas {
-  margin-top: 15px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 8px;
-}
-
-.history-container, .tips-container {
+.tips-container {
   margin-top: 20px;
   max-width: 400px;
   text-align: left;
@@ -155,8 +149,4 @@ canvas {
   border-radius: 8px;
   padding: 10px;
   z-index: 1;
-}
-
-.history-container ul {
-  list-style: inside;
 }
